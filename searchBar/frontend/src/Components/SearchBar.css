@@ -1,0 +1,12 @@
+.search-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  font-size: 1.4rem;
+}
+
+input {
+  font-size: 1.4rem;
+}
