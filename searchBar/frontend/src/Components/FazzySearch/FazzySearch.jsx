@@ -1,53 +1,53 @@
 import React, { useState, useEffect } from "react";
 import Fuse from "fuse.js";
-import "./FazzySearch.css"; // Include your styles
+import "./FazzySearch.css";
 
 const FazzySearch = () => {
-  const [query, setQuery] = useState(""); // State to store user query
-  const [results, setResults] = useState([]); // State to store search results
-  const [data, setData] = useState([]); // State to store fetched data
-  const [error, setError] = useState(null); // State to handle errors
+  const [query, setQuery] = useState("");
+  const [results, setResults] = useState([]);
+  const [data, setData] = useState([]);
+  const [error, setError] = useState(null);
 
-  // Fetch data from the API and store it in local storage
   const fetchData = async () => {
     try {
-      const response = await fetch("http://localhost:8000/search?query=all"); // Modify the endpoint as needed
+      const response = await fetch("http://localhost:8000/searchall");
       if (!response.ok) {
         throw new Error("Failed to fetch data");
       }
       const jsonData = await response.json();
       setData(jsonData);
-      localStorage.setItem("searchData", JSON.stringify(jsonData)); // Store fetched data in local storage
+      localStorage.setItem("searchData", JSON.stringify(jsonData));
     } catch (err) {
       setError(err.message);
     }
   };
 
-  // Load data from local storage on component mount
   useEffect(() => {
     const storedData = localStorage.getItem("searchData");
     if (storedData) {
-      setData(JSON.parse(storedData)); // Parse and set stored data
+      setData(JSON.parse(storedData));
     } else {
-      fetchData(); // Fetch data if not available in local storage
+      fetchData();
     }
   }, []);
 
-  // Function to perform fuzzy search
   const handleSearch = (e) => {
     const searchQuery = e.target.value;
     setQuery(searchQuery);
 
-    // Fuzzy search setup
+    if (searchQuery.trim() === "") {
+      setResults([]);
+      return;
+    }
+
     const fuse = new Fuse(data, {
-      keys: ["code", "shortDescription", "longDescription"], // Adjust keys based on your data structure
+      keys: ["code", "shortDescription", "longDescription"],
       includeScore: true,
-      threshold: 0.4, // Adjust threshold for fuzzy matching
+      threshold: 0.4,
     });
 
-    // Perform the search
     const results = fuse.search(searchQuery);
-    setResults(results.map((result) => result.item)); // Extract matched items
+    setResults(results.map((result) => result.item));
   };
 
   return (
@@ -55,7 +55,7 @@ const FazzySearch = () => {
       <input
         type="text"
         value={query}
-        onChange={handleSearch} // Update query state and perform search
+        onChange={handleSearch}
         placeholder="Enter search query"
         className="search-input"
       />
@@ -63,6 +63,7 @@ const FazzySearch = () => {
       {error && <p>Error: {error}</p>}
 
       <ul className="results-list">
+        {results.length === 0 && query && <li>No results found</li>}
         {results.map((result) => (
           <li key={result._id} className="result-item">
             <strong>{result.code}</strong> - {result.shortDescription}

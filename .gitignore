@@ -68,3 +68,5 @@ jest-output/
 env/
 venv/
 
+__pycache__/
+

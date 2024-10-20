@@ -59,3 +59,24 @@ async def search_items(
         raise HTTPException(status_code=404, detail="No records found")
 
     return results
+
+
+
+@app.get("/searchall", response_model=List[SearchResult])
+async def search_all_items(skip: int = 0, limit: int = 300):
+    cursor = collection.find().skip(skip).limit(limit) 
+
+    results = []
+    async for document in cursor:
+        results.append(SearchResult(
+            _id=str(document["_id"]), 
+            code=document["code"],
+            shortDescription=document["shortDescription"],
+            longDescription=document["longDescription"],
+            version=document["version"]
+        ))
+
+    if not results:
+        raise HTTPException(status_code=404, detail="No records found")
+
+    return results
