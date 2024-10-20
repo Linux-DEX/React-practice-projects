@@ -65,4 +65,6 @@ jest-output/
 
 # React Native specific
 .expo/
+env/
+venv/
 

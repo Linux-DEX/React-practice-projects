@@ -1,11 +1,17 @@
 import "./App.css";
+import FazzySearch from "./Components/FazzySearch/FazzySearch";
 import SearchBar from "./Components/SearchBar";
+import SearchBarAPI from "./Components/SearchBarAPI/SearchBarAPI";
 
 function App() {
   return (
     <>
+      <h2>Fazzy finder search</h2>
+      {/* <FazzySearch /> */}
       <h2>Search BAR</h2>
       <SearchBar />
+      <h2>search using api</h2>
+      <SearchBarAPI />
     </>
   );
 }
