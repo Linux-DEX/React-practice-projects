@@ -1,5 +1,4 @@
 import React, { useEffect, useState } from "react";
-import { onData } from "../../Rxjs/dataService";
 import { Subject } from "../../Rxjs/subjects";
 
 const Receiver = () => {
