@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import { sendData } from "../Rxjs/dataService";
+import { Subject } from "../../Rxjs/subjects";
 
-const Component1 = () => {
+const Sender = () => {
   const [inputValue, setInputValue] = useState("");
 
   const handleSendData = () => {
-    sendData(inputValue);
+    Subject.next({ inputValue });
   };
 
   const handleChange = (e) => {
@@ -15,7 +15,7 @@ const Component1 = () => {
 
   return (
     <div>
-      <h2>Component 1</h2>
+      <h2>sender</h2>
       <input
         type="text"
         onChange={handleChange}
@@ -27,4 +27,4 @@ const Component1 = () => {
   );
 };
 
-export default Component1;
+export default Sender;

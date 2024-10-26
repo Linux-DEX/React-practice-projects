@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from "react";
-import { onData } from "../Rxjs/dataService";
+import { onData } from "../../Rxjs/dataService";
+import { Subject } from "../../Rxjs/subjects";
 
-const Component2 = () => {
+const Receiver = () => {
   const [receivedData, setReceivedData] = useState(null);
 
   useEffect(() => {
-    const subscription = onData().subscribe((data) => {
-      setReceivedData(data);
+    const subscription = Subject.subscribe((data) => {
+      setReceivedData(data.inputValue);
     });
-
     return () => {
       subscription.unsubscribe();
     };
@@ -16,10 +16,10 @@ const Component2 = () => {
 
   return (
     <div>
-      <h2>Component 2</h2>
+      <h2>reciever</h2>
       <p>Received Data: {receivedData}</p>
     </div>
   );
 };
 
-export default Component2;
+export default Receiver;

@@ -1,5 +1,5 @@
-import './App.css';
-import Gread from './Gread';
+import "./App.css";
+import Gread from "./Gread";
 
 function App() {
   return (
@@ -7,8 +7,8 @@ function App() {
       <header className="App-header">
         <Gread name="Sarabjeet" othername="anime" />
         <Gread name="inderjeet" />
-        <Gread name="savithri" />
-        <Gread name="ravinder" />
+        <Gread name="naruto" />
+        <Gread name="lufi" />
       </header>
     </div>
   );
