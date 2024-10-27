@@ -87,4 +87,78 @@ body.append(div)
 ```
 
 ### 5. Removing Element
++ The `Element.remove()` method removes the element from the DOM.
 
+```js
+const element = document.getElementById('div');
+element.remove();
+```
+
++ The `removeChild()` method of the node interface removes a child node from the DOM and returns the removed node.
+
+```js
+const parent = document.getElementById("parent");
+const child = document.getElementById("child");
+const throwawayNode = parent.removeChild(child);
+```
+
+### 6. Modifying Element Attribute
++ The `getAttribute()` method of the element interface returns the value of a specified attribute on the element.
+
+```js
+const div = document.getElementById('div');
+const exampleAttr = div.getAttributes('id');
+
+// other way
+const exampleAttr2 = div.id;
+```
+
++ The `setAttribute()` method of the element interface sets the value of an attribute on the specified element. If the attribute already exists, the value is updated; otherwise a new attribute is added with the specified name and value.
+
+```js
+const button = document.querySelector('button');
+button.setAttribute('name', 'helloButton');
+```
+
++ The `dataset` read-only property of the HTMLElement interface providers read/write access to custom data attributes (`data-*`) on elements. It exposes a map of strings (`DOMStringMap`) with an entry for each `data-*` attribute.
+    - An HTML `data-*` attribute and its corresponding DOM `dataset.property` modify their shared name according to where they are read or written.
+
+```html
+<div id="user" data-id="1234567890" data-user="carinaanand" data-date-of-birth>
+  Carina Anand
+</div>
+```
+
+```js
+const el = document.querySelector('#user');
+
+// set a data attribute
+el.dataset.dateOfBirth = '1960-10-03';
+```
+
+### 7. Modifying Element Classes
++ The `Element.classList` is a read-only property that returns a live DOMTokenlist collection of the **class** attributes of the element. This can then be used to manipulate the class list.
+    - Using `classList` is a convenient alternative to accessing an element's list of classes as a space-delimited string via `element.className`.
+
+```js
+const div = document.createElement('div');
+
+// use the classList API to remove and add classes
+div.classList.remove('foo');
+div.classList.add('another-class');
+
+// if visible is set remove it, otherwise add it 
+div.classList.toggle('visible');
+
+// replace class 'foo' with class 'bar'
+div.classList.replace('foo', 'bar');
+```
+
+### 8. Modifying Element Style
+The read-only `style` property of the HTMLElement returns the *inline* style of an element in the form of a live CSSStyleDeclaration object that contains a list of all styles properties for that element with values assigned only for the attributes that are defined in the element's inline style attribute.
+
+```js
+const element = document.querySelector('#id');
+element.style.backgroundColor = 'red';
+element.style.color = 'white';
+```
