@@ -8,13 +8,35 @@ import ProtectedRoute from "./Components/ProtectedRoute";
 import { AuthProvider, useAuth } from "./Context/AuthContext";
 import Settings from "./Components/Settings";
 import Profile from "./Components/Profile";
+import AuthLayout from "./Layout/AuthLayout";
+import MainLayout from "./Layout/MainLayout";
 
 const routeConfig = [
-  { path: "/", element: <Home />, isProtected: false },
-  { path: "/login", element: <Login />, isProtected: false },
-  { path: "/dashboard", element: <Dashboard />, isProtected: true },
-  { path: "/settings", element: <Settings />, isProtected: true },
-  { path: "/profile", element: <Profile />, isProtected: true },
+  { path: "/", element: <Home />, isProtected: false, layout: null },
+  {
+    path: "/login",
+    element: <Login />,
+    isProtected: false,
+    layout: AuthLayout,
+  },
+  {
+    path: "/dashboard",
+    element: <Dashboard />,
+    isProtected: true,
+    layout: MainLayout,
+  },
+  {
+    path: "/settings",
+    element: <Settings />,
+    isProtected: true,
+    layout: MainLayout,
+  },
+  {
+    path: "/profile",
+    element: <Profile />,
+    isProtected: true,
+    layout: MainLayout,
+  },
 ];
 
 const AppRoutes = () => {
@@ -22,15 +44,17 @@ const AppRoutes = () => {
 
   return (
     <Routes>
-      {routeConfig.map(({ path, element, isProtected }) => (
+      {routeConfig.map(({ path, element, isProtected, layout: Layout }) => (
         <Route
           key={path}
           path={path}
           element={
             isProtected ? (
               <ProtectedRoute isAuthenticated={isAuthenticated}>
-                {element}
+                {Layout ? <Layout>{element}</Layout> : element}
               </ProtectedRoute>
+            ) : Layout ? (
+              <Layout>{element}</Layout>
             ) : (
               element
             )
