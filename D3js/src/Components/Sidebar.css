@@ -1,0 +1,98 @@
+.sidebar {
+  height: 100vh;
+}
+
+.sidebar-nav {
+  height: 100%;
+  display: inline-flex;
+  flex-direction: column;
+  background-color: white;
+  border-right: 1px solid #e5e7eb;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-header {
+  padding: 16px;
+  padding-bottom: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 3.5rem;
+}
+
+.logo {
+  overflow: hidden;
+  transition: width 0.3s;
+  width: 0;
+}
+
+.logo.expanded {
+  width: 8rem;
+}
+
+.toggle-button {
+  padding: 6px;
+  border-radius: 0.5rem;
+  background-color: #f9fafb;
+  transition: background-color 0.2s;
+}
+
+.toggle-button:hover {
+  background-color: #f3f4f6;
+}
+
+.sidebar-content {
+  flex: 1;
+  padding: 0 12px;
+}
+
+.sidebar-footer {
+  display: flex;
+  padding: 12px;
+  border-top: 1px solid #e5e7eb;
+  align-items: center;
+}
+
+.avatar {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 0.5rem;
+}
+
+.user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  overflow: hidden;
+  transition: width 0.3s, margin-left 0.3s;
+  width: 0;
+  margin-left: 0;
+}
+
+.user-info.expanded {
+  width: 13rem;
+  margin-left: 0.75rem;
+}
+
+.user-details {
+  line-height: 1.2;
+}
+
+.user-name {
+  font-weight: 600;
+  margin: 2px;
+}
+
+.user-email {
+  font-size: 0.75rem;
+  color: #4b5563;
+}
+
+.image {
+  width: 2.3rem;
+}
+
+.iconImg {
+  width: 1rem;
+  height: 0.6rem;
+}
