@@ -16,7 +16,7 @@ const styles = {
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
-    height: "100vh",
+    height: "95%",
     backgroundColor: "#f0f4f8",
     flexDirection: "column",
     padding: "20px",
