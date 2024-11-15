@@ -8,12 +8,12 @@ const app = express();
 app.use(bodyParser.json());
 
 app.use(cors({
-  origin: ['http://localhost:5173', 'http://another-origin.com'], // Multiple allowed origins
+  origin: ['http://localhost:5173', 'http://localhost:3000'],
   methods: ['GET', 'POST'],
   allowedHeaders: ['Content-Type'],
 }));
 
-const dbURI = 'mongodb://localhost:27017/ISR'; 
+const dbURI = 'mongodb://localhost:27017/ISR';
 
 mongoose.connect(dbURI, {
   useNewUrlParser: true,
@@ -35,15 +35,15 @@ const userSchema = new mongoose.Schema<IUser>({
   userId: { type: String, required: true, unique: true },
   password: { type: String, required: true }
 }, {
-  collection: 'Users' 
+  collection: 'Users'
 });
 
 const User = mongoose.model<IUser>('User', userSchema);
 
 app.get('/users', async (req, res) => {
   try {
-    const users = await User.find(); 
-    res.json(users); 
+    const users = await User.find();
+    res.json(users);
   } catch (err) {
     res.status(500).json({ message: 'Error fetching users' });
   }
