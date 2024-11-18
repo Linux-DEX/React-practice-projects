@@ -15,7 +15,6 @@ const BarChart = ({ data, width = 500, height = 300 }) => {
 
   return (
     <svg width={width} height={height}>
-      {/* Bars */}
       {data.map((d, index) => (
         <g key={index}>
           <rect
@@ -25,7 +24,6 @@ const BarChart = ({ data, width = 500, height = 300 }) => {
             height={height - yScale(d.value)}
             fill="teal"
           />
-          {/* Labels */}
           <text
             x={xScale(d.label) + xScale.bandwidth() / 2}
             y={yScale(d.value) - 5}
@@ -36,7 +34,6 @@ const BarChart = ({ data, width = 500, height = 300 }) => {
           </text>
         </g>
       ))}
-      {/* X-axis labels */}
       <g transform={`translate(0, ${height})`}>
         {data.map((d, index) => (
           <text

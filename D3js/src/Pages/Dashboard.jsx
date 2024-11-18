@@ -30,10 +30,10 @@ const Dashboard = () => {
   ];
 
   const scatterData = [
-    { x: 10, y: 20 },
-    { x: 15, y: 35 },
-    { x: 20, y: 25 },
-    { x: 30, y: 40 },
+    { x: 10, y: 20, text: "onepiece" },
+    { x: 15, y: 35, text: "naruto" },
+    { x: 20, y: 25, text: "bleach" },
+    { x: 30, y: 40, text: "death note" },
   ];
 
   const areaData = [10, 20, 30, 25, 35, 40, 60];
@@ -56,17 +56,17 @@ const Dashboard = () => {
     <div style={styles.container}>
       <h1 style={styles.title}>Dashboard Page</h1>
 
-      <div style={styles.section}>
+      <div style={styles.sections}>
         <h2>Line Plot</h2>
         <LinePlot data={line_plot_data} />
       </div>
 
-      <div style={styles.section}>
+      <div style={styles.sections}>
         <h2>Pie Chart</h2>
         <PieChart data={pie_chart_data} />
       </div>
 
-      <div style={styles.section}>
+      <div style={styles.sections}>
         <h2>Progress Bar Example</h2>
         <ProgressBar
           progress={progress}
@@ -79,27 +79,27 @@ const Dashboard = () => {
         </button>
       </div>
 
-      <div className={styles.sections}>
+      <div style={styles.sections}>
         <h2>Bar Chart</h2>
         <BarChart data={barChartData} />
       </div>
 
-      <div className={styles.sections}>
+      <div style={styles.sections}>
         <h2>Scatter Plot</h2>
         <ScatterPlot data={scatterData} />
       </div>
 
-      <div className={styles.sections}>
+      <div style={styles.sections}>
         <h2>Area Chart</h2>
         <AreaChart data={areaData} />
       </div>
 
-      <div className={styles.sections}>
+      <div style={styles.sections}>
         <h2>Bubble Chart</h2>
         <BubbleChart data={bubbleData} />
       </div>
 
-      <div className={styles.sections}>
+      <div style={styles.sections}>
         <h2>Donut Chart</h2>
         <DonutChart data={donutData} />
       </div>
@@ -121,13 +121,14 @@ const styles = {
     fontSize: "2rem",
     marginBottom: "1rem",
   },
-  section: {
+  sections: {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    width: "100%",
-    maxWidth: "600px",
+    width: "80vw",
+    height: "80vh",
     marginBottom: "20px",
+    padding: "4rem",
   },
   button: {
     marginTop: "10px",
