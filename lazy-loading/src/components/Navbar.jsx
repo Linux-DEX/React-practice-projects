@@ -1,7 +1,22 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 
 const Navbar = () => {
+  const [isDropdownOpen, setDropdownOpen] = useState(false);
+
+  useEffect(() => {
+    const handleOutsideClick = (event) => {
+      if (!event.target.closest("#lazy-tab")) {
+        setDropdownOpen(false);
+      }
+    };
+
+    document.addEventListener("click", handleOutsideClick);
+    return () => {
+      document.removeEventListener("click", handleOutsideClick);
+    };
+  }, []);
+
   return (
     <>
       <nav className="bg-white border-gray-200 dark:bg-gray-900 w-[80%] rounded-lg relative left-[50%] translate-x-[-50%]">
@@ -40,45 +55,43 @@ const Navbar = () => {
                   Scroll Base
                 </NavLink>
               </li>
-              {/* <li>
-                <NavLink
-                  to="#"
-                  className={({ isActive }) =>
-                    `block py-2 px-3 rounded md:p-0 ${
-                      isActive
-                        ? "text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500"
-                        : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                    }`
-                  }>
-                  -------
-                </NavLink>
+              <li id="lazy-tab" className="relative">
+                <button
+                  className={`block py-2 px-3 rounded md:p-0 ${
+                    isDropdownOpen ||
+                    window.location.pathname.startsWith("/lazy")
+                      ? "text-blue-700"
+                      : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
+                  }`}
+                  onClick={() => setDropdownOpen((prev) => !prev)}>
+                  Lazy Tab
+                </button>
+                {isDropdownOpen && (
+                  <div className="absolute bg-white shadow-lg mt-2 w-40 rounded-lg border">
+                    <NavLink
+                      to="/lazy"
+                      end
+                      className={({ isActive }) =>
+                        isActive
+                          ? "block px-4 py-2 text-blue-600 bg-gray-100"
+                          : "block px-4 py-2 text-gray-600 hover:bg-gray-200 hover:text-blue-500"
+                      }
+                      onClick={() => setDropdownOpen(false)}>
+                      Users
+                    </NavLink>
+                    <NavLink
+                      to="/lazy/add-user"
+                      className={({ isActive }) =>
+                        isActive
+                          ? "block px-4 py-2 text-blue-600 bg-gray-100"
+                          : "block px-4 py-2 text-gray-600 hover:bg-gray-200 hover:text-blue-500"
+                      }
+                      onClick={() => setDropdownOpen(false)}>
+                      Add User
+                    </NavLink>
+                  </div>
+                )}
               </li>
-              <li>
-                <NavLink
-                  to="#"
-                  className={({ isActive }) =>
-                    `block py-2 px-3 rounded md:p-0 ${
-                      isActive
-                        ? "text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500"
-                        : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                    }`
-                  }>
-                  ---
-                </NavLink>
-              </li>
-              <li>
-                <NavLink
-                  to="#"
-                  className={({ isActive }) =>
-                    `block py-2 px-3 rounded md:p-0 ${
-                      isActive
-                        ? "text-white bg-blue-700 md:bg-transparent md:text-blue-700 md:dark:text-blue-500"
-                        : "text-gray-900 hover:bg-gray-100 md:hover:bg-transparent md:hover:text-blue-700 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-                    }`
-                  }>
-                  ---
-                </NavLink>
-              </li> */}
             </ul>
           </div>
         </div>
