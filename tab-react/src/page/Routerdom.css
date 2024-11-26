@@ -1,0 +1,33 @@
+.Routerdom {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul {
+  display: flex;
+  list-style-type: none;
+  padding: 0;
+}
+
+nav li {
+  margin-right: 10px;
+}
+
+nav a {
+  padding: 10px 20px;
+  text-decoration: none;
+  background-color: lightgray;
+  border-radius: 5px;
+  color: black;
+}
+
+nav a:hover {
+  background-color: darkgray;
+}
+
+nav a.active {
+  background-color: #4caf50;
+  color: white;
+}

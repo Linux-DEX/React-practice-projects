@@ -1,0 +1,23 @@
+.Home {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+button {
+  padding: 10px 20px;
+  background-color: lightgray;
+  border: none;
+  cursor: pointer;
+  border-radius: 5px;
+}
+
+button:hover {
+  background-color: darkgray;
+}
+
+button.active {
+  background-color: #4caf50;
+  color: white;
+}

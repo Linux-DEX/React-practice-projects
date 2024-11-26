@@ -1,9 +1,8 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import "./App.css";
-import Scrollbased from "./pages/Scrollbased";
-import Home from "./pages/Home";
-import Navbar from "./components/Navbar";
-import Lazy from "./pages/Lazy";
+import Navbar from "./components/navbar/Navbar";
+import Home from "./page/Home";
+import Routerdom from "./page/Routerdom";
 
 function App() {
   return (
@@ -12,8 +11,7 @@ function App() {
         <Navbar />
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/scrollbase" element={<Scrollbased />} />
-          <Route path="/lazy/*" element={<Lazy />} />
+          <Route path="/router-dom/*" element={<Routerdom />} />
         </Routes>
       </BrowserRouter>
     </>
