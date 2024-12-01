@@ -7,6 +7,8 @@ const Axios3 = () => {
   useEffect(() => {
     const fetchPosts = async () => {
       try {
+        // we can use like this also
+        // const response = await axios.get("/posts");
         const response = await request({
           url: "posts",
           method: "GET",
