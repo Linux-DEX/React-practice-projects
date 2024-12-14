@@ -39,7 +39,7 @@ const Navbar = () => {
                     }`
                   }
                   aria-current="page">
-                  Home
+                  react-window
                 </NavLink>
               </li>
               <li>
