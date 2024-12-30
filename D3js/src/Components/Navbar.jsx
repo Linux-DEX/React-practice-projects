@@ -15,6 +15,11 @@ const ItemSidebar = [
     text: "Dashboard",
     icon: "https://cdn-icons-png.flaticon.com/128/1828/1828791.png",
   },
+  {
+    to: "/bars",
+    text: "Bars",
+    icon: "https://cdn-icons-png.flaticon.com/128/149/149093.png",
+  },
 ];
 
 const Navbar = () => {
