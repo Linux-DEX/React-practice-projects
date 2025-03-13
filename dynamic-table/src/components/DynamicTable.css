@@ -1,0 +1,92 @@
+.DynamicTable {
+  margin: 20px;
+  font-family: Arial, sans-serif;
+}
+
+.Heading {
+  text-align: center;
+  font-size: 24px;
+  margin-bottom: 20px;
+}
+
+.title-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-size: 18px;
+  color: #333;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+th, td {
+  padding: 12px;
+  text-align: left;
+  border: 1px solid #ddd;
+}
+
+th {
+  background-color: #f2f2f2;
+  color: #333;
+}
+
+tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+tr:hover {
+  background-color: #f1f1f1;
+}
+
+.title-container {
+  margin-bottom: 20px;
+}
+
+/* selector css */
+
+.dropdown-button {
+  padding: 10px;
+  border: 1px solid #ccc;
+  cursor: pointer;
+  background-color: #fff;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  border: 1px solid #ccc;
+  background-color: white;
+  z-index: 1;
+  width: 200px;
+  max-height: 200px;
+  overflow-y: auto;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+.options {
+  padding: 10px;
+}
+
+label {
+  display: block;
+  padding: 5px;
+}
+
+input[type="checkbox"] {
+  margin-right: 8px;
+}
+
+ul {
+  margin-top: 10px;
+}
