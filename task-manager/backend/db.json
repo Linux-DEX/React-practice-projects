@@ -1,0 +1,21 @@
+{
+  "users": [
+    {
+      "username": "sarabjeet"
+    }
+  ],
+  "tasks": [
+    {
+      "id": "c092b18f-9eac-420d-8a1e-168a339739e6",
+      "title": "coding ",
+      "completed": false,
+      "username": "sarabjeet"
+    },
+    {
+      "id": "06abaa67-833f-479e-b343-1563e51409ff",
+      "title": "complete DSA python",
+      "completed": true,
+      "username": "sarabjeet"
+    }
+  ]
+}
