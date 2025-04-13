@@ -2,6 +2,9 @@
   "users": [
     {
       "username": "username"
+    },
+    {
+      "username": "user"
     }
   ],
   "tasks": []
