@@ -1,20 +1,23 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import Login from "./pages/Login";
 import Tasks from "./pages/Tasks";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 function App() {
-  const isAuthenticated = !!localStorage.getItem("token");
-
   return (
     <Routes>
       <Route path="/login" element={<Login />} />
       <Route
-        path="/"
-        element={isAuthenticated ? <Tasks /> : <Navigate to="/login" />}
+        path="/tasks"
+        element={
+          <ProtectedRoute>
+            <Tasks />
+          </ProtectedRoute>
+        }
       />
+      <Route path="*" element={<Navigate to="/tasks" />} />
     </Routes>
   );
 }
 
 export default App;
-
