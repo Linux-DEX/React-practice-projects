@@ -1,0 +1,28 @@
+.masonry-container {
+  column-count: 3;
+  column-gap: 1rem;
+  padding: 1rem;
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.masonry-item:hover {
+  transform: scale(1.02);
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+  background-color: #7287fd;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: transform 0.2s, box-shadow 0.2s, background-color 0.2s;
+}
+
+.masonry-item.highlight {
+  background-color: #1e66f5;
+  transform: scale(1.03);
+  box-shadow: 0 0 12px rgba(30, 102, 245, 0.4);
+}
+
